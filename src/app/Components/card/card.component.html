@@ -1,0 +1,27 @@
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="card p-2" style="width: 30rem;">
+      <div class="card-body">
+          <p class="card-title fs-5">Weather</p>
+        <form class="mb-3" #form="ngForm" (ngSubmit)="getWeather(form)">
+            <div class="input-group mb-2">
+              <input type="text" class="form-control" placeholder="e.g. Nairobi"
+                aria-label="city" name="city" required #theCity="ngModel" ngModel>
+              <button class="btn btn-outline-success" type="submit" id="button-addon2">search</button>
+            </div>
+
+            <div *ngIf="theCity.invalid" class="alert alert-danger text-center" role="alert">
+                Enter a city
+            </div>
+        </form>
+
+        <div *ngIf="show">
+            <p class="fs-6 fw-bolder">There are {{ main }} with {{ description }}</p>
+            <div class="row">
+              <p class="col-6">Temp: {{ temp}} degrees</p>
+              <p class="col-6">Humidity: {{ humidity }}</p>
+              <p class="col-6">Wind: {{ wind }} knots</p>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
